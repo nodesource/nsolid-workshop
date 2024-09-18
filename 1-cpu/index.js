@@ -1,5 +1,10 @@
 'use strict';
 
+if (!process.env.NSOLID_SAAS) {
+  console.error('You forgot to pass NSOLID_SAAS environment variable.');
+  process.exit(1);
+}
+
 const express = require('express');
 const app = express();
 
