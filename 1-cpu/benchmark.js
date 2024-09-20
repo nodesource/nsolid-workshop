@@ -7,6 +7,7 @@ async function main () {
     url: 'http://localhost:3000',
     connections: 100,
     duration: 10,
+    // duration: 60,
   })
   console.log(autocannon.printResult(result));
 }
