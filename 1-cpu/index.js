@@ -1,11 +1,12 @@
 'use strict';
+const express = require('express');
+const pkgJson = require('../package.json')
 
-if (!process.env.NSOLID_SAAS) {
+if (!process.env.NSOLID_SAAS && !hasPkgJsonConf()) {
   console.error('You forgot to pass NSOLID_SAAS environment variable.');
   process.exit(1);
 }
 
-const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
@@ -37,4 +38,8 @@ function generateLargeString(date, iterations) {
   }
 
   return chars;
+}
+
+function hasPkgJsonConf() {
+  return pkgJson.nsolid && pkgJson.nsolid.saas !== '';
 }
